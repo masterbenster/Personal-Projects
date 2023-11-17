@@ -6,50 +6,51 @@
 #include <stdio.h>
 #include <iomanip>
 #include <string>
-#include <array>
+#include <cstring>
+
+using namespace std;
 
 int main()
 {
-    using std::cout;
-    using std::endl;
-
     int count = 0;
 
     bool isIterating = true;
-    int array[5] = {8,10,15,3,7};
+    string hello = "world";
 
     // Note: The array size is 5, this may not always be known
-    for (int i = 0; i < sizeof(array); i++)
+    for (int i = 0; i < hello.length(); i++)
     {
-        array[i] = 1;
+        hello[i] = 'a';
         if (i == 3)
         {
-            array[i] = 0;
+            hello[i] = 'c';
         }
     }
+
     // Note: (isIterating==True) is the same as (isIterating)
     while (isIterating)
     {
-        if (count == sizeof(array)) // make sure we are still in our array
+        if (count == hello.length()) // make sure we are still in our array
         {
             count = 0; // reset the counter
         }
         else
         {
-            if (array[count] == 0) // check arrays current value
+            if (hello[count] == 'a') // check arrays current value
             {
                 isIterating = false; // set our while loop to false
-                array[count] = -2;
+                hello[count] = 'b';
             }
             count++; // this can also be count = count + 1;
         }
     }
 
-    cout << "This is my final array: \n"; 
+    cout << "This is my final array:" << endl; 
     cout <<"Array Values: ";
-    for (int i = 0; i < sizeof(array); i++)
+    for (int i = 0; i < hello.length(); i++)
     {
-        cout<< array[i] << " ";
+        cout<< hello[i] << " ";
     }
-
+    cout <<endl; 
+    
 }
